@@ -21,7 +21,7 @@ public class Card
         { CardRank.Ace, 11 }
     };
 
-    public Card(CardRank rank, CardSuit suit, bool flipped)
+    public Card(CardSuit suit, CardRank rank, bool flipped)
     {
         Rank = rank;
         Suit = suit;
