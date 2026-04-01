@@ -15,7 +15,7 @@ public class CardHand
     {
         int aceCount = 0;
         int value = 0;
-        
+
         foreach (Card card in _cards)
         {
             if (card.Rank == CardRank.Ace) aceCount++;
