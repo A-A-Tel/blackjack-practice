@@ -1,32 +1,41 @@
+using System;
+using System.Reactive;
+using System.Windows.Input;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
+using Blackjack.Models.Card;
 using ReactiveUI;
 
 namespace Blackjack.ViewModels.Card;
 
 public class CardViewModel : ViewModelBase
 {
-    private readonly Models.Card.Card _card;
+    private static readonly Bitmap BackImage =
+        new(AssetLoader.Open(new Uri("avares://Blackjack/Assets/Cards/back.png")));
 
-    public CardViewModel(Models.Card.Card card)
+    public CardViewModel(CardModel cardModel)
     {
-        _card = card;
+        _cardModel = cardModel;
+
+        Image = new Bitmap(AssetLoader.Open(
+            new Uri($"avares://Blackjack/Assets/Cards/{Suit}{Rank}.png")));
+
+        Flip = ReactiveCommand.Create(() =>
+        {
+            _cardModel.Flip();
+            this.RaisePropertyChanged(nameof(IsFlipped));
+            this.RaisePropertyChanged(nameof(Image));
+        });
     }
 
-    public string Rank => _card.Rank.ToString();
-    public string Suit => _card.Suit.ToString();
+    private readonly CardModel _cardModel;
 
-    public bool IsFlipped => _card.Flipped;
+    private string Rank => _cardModel.Rank.ToString();
+    private string Suit => _cardModel.Suit.ToString();
 
-    public string Display => $"{Rank} of {Suit}";
+    private bool IsFlipped => _cardModel.Flipped;
 
-    public string ImagePath =>
-        IsFlipped
-            ? $"/Assets/Cards/{Rank}_of_{Suit}.png"
-            : "/Assets/Cards/back.png";
-
-    public void Flip()
-    {
-        _card.Flip();
-        this.RaisePropertyChanged(nameof(IsFlipped));
-        this.RaisePropertyChanged(nameof(ImagePath));
-    }
+    public Bitmap Image => IsFlipped ? BackImage : field;
+    
+    public ICommand Flip { get; }
 }

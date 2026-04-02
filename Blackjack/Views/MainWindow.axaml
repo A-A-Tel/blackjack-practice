@@ -9,6 +9,8 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Blackjack">
 
-    <ContentControl Content="{Binding CurrentPage}" />
+    <ScrollViewer>
+        <ContentControl Content="{Binding CurrentPage}" />
+    </ScrollViewer>
 
 </Window>

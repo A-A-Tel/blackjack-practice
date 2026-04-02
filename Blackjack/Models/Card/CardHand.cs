@@ -4,11 +4,11 @@ namespace Blackjack.Models.Card;
 
 public class CardHand
 {
-    private readonly List<Card> _cards = [];
+    private readonly List<CardModel> _cards = [];
 
-    public void Hit(Card card)
+    public void Hit(CardModel cardModel)
     {
-        _cards.Add(card);
+        _cards.Add(cardModel);
     }
 
     public int GetValue()
@@ -16,7 +16,7 @@ public class CardHand
         int aceCount = 0;
         int value = 0;
 
-        foreach (Card card in _cards)
+        foreach (CardModel card in _cards)
         {
             if (card.Rank == CardRank.Ace) aceCount++;
             value += card.Value;
