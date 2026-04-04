@@ -4,9 +4,9 @@ namespace Blackjack.Models.Player;
 
 public class Player
 {
+    private Chipset _chipset = new();
     public CardHand Hand { get; } = new();
     public string Name { get; }
-    private Chipset _chipset = new();
 
     public Action GetAction()
     {

@@ -3,7 +3,9 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Blackjack.Services;
 using Blackjack.ViewModels;
+using Blackjack.ViewModels.Menu;
 using Blackjack.Views;
 
 namespace Blackjack;
@@ -19,12 +21,14 @@ public class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-            DisableAvaloniaDataAnnotationValidation();
+            MainWindowViewModel mainWindowViewModel = new();
+            NavigationService navigationService = new(mainWindowViewModel);
+
+            mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
+
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel()
+                DataContext = mainWindowViewModel
             };
         }
 
