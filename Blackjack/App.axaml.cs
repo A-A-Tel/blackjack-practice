@@ -1,16 +1,15 @@
-using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
+using System.Linq;
 using Avalonia.Markup.Xaml;
-using Blackjack.Services;
 using Blackjack.ViewModels;
-using Blackjack.ViewModels.Menu;
 using Blackjack.Views;
 
 namespace Blackjack;
 
-public class App : Application
+public partial class App : Application
 {
     public override void Initialize()
     {
@@ -21,14 +20,12 @@ public class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            MainWindowViewModel mainWindowViewModel = new();
-            NavigationService navigationService = new(mainWindowViewModel);
-
-            mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
-
+            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
+            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
+            DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = mainWindowViewModel
+                DataContext = new MainWindowViewModel(),
             };
         }
 
@@ -38,11 +35,13 @@ public class App : Application
     private void DisableAvaloniaDataAnnotationValidation()
     {
         // Get an array of plugins to remove
-        DataAnnotationsValidationPlugin[] dataValidationPluginsToRemove =
+        var dataValidationPluginsToRemove =
             BindingPlugins.DataValidators.OfType<DataAnnotationsValidationPlugin>().ToArray();
 
         // remove each entry found
-        foreach (DataAnnotationsValidationPlugin plugin in dataValidationPluginsToRemove)
+        foreach (var plugin in dataValidationPluginsToRemove)
+        {
             BindingPlugins.DataValidators.Remove(plugin);
+        }
     }
 }

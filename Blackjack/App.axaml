@@ -2,12 +2,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="Blackjack.App"
              xmlns:local="using:Blackjack"
-             RequestedThemeVariant="Light">
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
-        <local:ViewLocator />
+        <local:ViewLocator/>
     </Application.DataTemplates>
-
+  
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
