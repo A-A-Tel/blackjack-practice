@@ -15,6 +15,4 @@ public class PlayerViewModel : ViewModelBase
     public ChipsetModel Chipset =>  _player.Chipset;
     public HandModel Hand => _player.Hand;
     public string Name => _player.Name;
-    
-    
 }
