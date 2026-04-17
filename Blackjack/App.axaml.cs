@@ -6,6 +6,7 @@ using Avalonia.Markup.Xaml;
 using Blackjack.Models.Player;
 using Blackjack.Services;
 using Blackjack.ViewModels;
+using Blackjack.ViewModels.Menu;
 using Blackjack.ViewModels.Player;
 using Blackjack.Views;
 
@@ -25,8 +26,7 @@ public class App : Application
             MainWindowViewModel mainWindowViewModel = new();
             NavigationService navigationService = new(mainWindowViewModel);
 
-            // mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
-            mainWindowViewModel.CurrentPage = new DealerViewModel(new DealerModel());
+            mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
 
             desktop.MainWindow = new MainWindow
             {

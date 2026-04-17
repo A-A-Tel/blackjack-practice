@@ -3,10 +3,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:table="clr-namespace:Blackjack.ViewModels.Table"
+             xmlns:player="clr-namespace:Blackjack.ViewModels.Player"
+             xmlns:view="clr-namespace:Blackjack.Views.Player"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="Blackjack.Views.Table.TableView"
              x:DataType="table:TableViewModel"
              Background="DarkGreen">
 
+    <Grid RowDefinitions="Auto,*,Auto">
+        <ItemsControl ItemsSource="{Binding Players}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type player:PlayerViewModel}">
+                    <view:PlayerView />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        
+        
+        <DockPanel HorizontalAlignment="Center" Grid.Row="2">
+            <ContentControl Content="{Binding Dealer}"/>
+        </DockPanel>
+    </Grid>
 
 </UserControl>
