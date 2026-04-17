@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Blackjack.Models.Card;
 
-public class Card
+public class CardModel
 {
     private static readonly Dictionary<Rank, int> BlackjackValues = new()
     {
@@ -21,7 +21,7 @@ public class Card
         { Rank.Ace, 11 }
     };
 
-    public Card(Suit suit, Rank rank, bool flipped)
+    public CardModel(Suit suit, Rank rank, bool flipped)
     {
         Rank = rank;
         Suit = suit;

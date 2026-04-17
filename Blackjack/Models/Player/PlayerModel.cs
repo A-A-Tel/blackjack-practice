@@ -2,16 +2,16 @@ using Blackjack.Models.Card;
 
 namespace Blackjack.Models.Player;
 
-public class Player
+public class PlayerModel
 {
     private Chipset _chipset = new();
-    public Hand Hand { get; } = new();
+    public HandModel HandModel { get; } = new();
     public string Name { get; }
 
     public Action GetAction()
     {
-        int value = Hand.GetValue();
-        return Hand.GetValue() switch
+        int value = HandModel.GetValue();
+        return HandModel.GetValue() switch
         {
             < 6 => Action.Double,
             >= 17 => Action.Stand,

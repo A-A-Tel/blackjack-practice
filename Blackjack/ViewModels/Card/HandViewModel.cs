@@ -6,30 +6,28 @@ namespace Blackjack.ViewModels.Card;
 
 public class HandViewModel : ViewModelBase
 {
-    public ObservableCollection<CardViewModel> Cards { get; } = [];
-    private readonly Hand _hand;
+    private readonly HandModel _handModel;
 
-    public int Value => _hand.GetValue();
-
-    public HandViewModel(Hand hand)
+    public HandViewModel(HandModel handModel)
     {
-        _hand = hand;
+        _handModel = handModel;
         FillCards();
     }
 
-    public void AddCard(Models.Card.Card card)
+    public ObservableCollection<CardViewModel> Cards { get; } = [];
+
+    public int Value => _handModel.GetValue();
+
+    public void AddCard(CardModel cardModel)
     {
-        _hand.AddCard(card);
-        Cards.Add(new CardViewModel(card));
+        _handModel.AddCard(cardModel);
+        Cards.Add(new CardViewModel(cardModel));
         this.RaisePropertyChanged(nameof(Cards));
     }
 
     private void FillCards()
     {
-        foreach (var card in _hand.Cards)
-        {
-            Cards.Add(new CardViewModel(card));
-        }
+        foreach (CardModel card in _handModel.Cards) Cards.Add(new CardViewModel(card));
 
         this.RaisePropertyChanged(nameof(Cards));
         this.RaisePropertyChanged(nameof(Value));

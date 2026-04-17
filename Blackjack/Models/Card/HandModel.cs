@@ -2,22 +2,22 @@ using System.Collections.Generic;
 
 namespace Blackjack.Models.Card;
 
-public class Hand
+public class HandModel
 {
-    private readonly List<Card> _cards =
+    private readonly List<CardModel> _cards =
     [
         new(Suit.Clubs, Rank.Ace, false),
         new(Suit.Spades, Rank.Ace, false),
         new(Suit.Hearts, Rank.Ace, false),
         new(Suit.Diamonds, Rank.Ace, false),
-        new(Suit.Clubs, Rank.Ace, false),
+        new(Suit.Clubs, Rank.Ace, false)
     ];
 
-    public IReadOnlyList<Card> Cards => _cards;
+    public IReadOnlyList<CardModel> Cards => _cards;
 
-    public void AddCard(Card card)
+    public void AddCard(CardModel cardModel)
     {
-        _cards.Add(card);
+        _cards.Add(cardModel);
     }
 
     public int GetValue()
@@ -25,7 +25,7 @@ public class Hand
         int aceCount = 0;
         int value = 0;
 
-        foreach (Card card in _cards)
+        foreach (CardModel card in _cards)
         {
             if (card.Rank == Rank.Ace) aceCount++;
             value += card.Value;

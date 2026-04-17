@@ -1,3 +1,4 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 
@@ -8,7 +9,7 @@ public partial class HandView : UserControl
     public HandView()
     {
         InitializeComponent();
-        
+
         PointerMoved += OnPointerMoved;
         PointerEntered += OnPointerEntered;
         PointerExited += OnPointerExited;
@@ -16,19 +17,19 @@ public partial class HandView : UserControl
 
     private void OnPointerEntered(object? sender, PointerEventArgs e)
     {
-        HoverValueText.IsVisible = true;
+        HoverValueBlock.IsVisible = true;
     }
 
     private void OnPointerExited(object? sender, PointerEventArgs e)
     {
-        HoverValueText.IsVisible = false;
+        HoverValueBlock.IsVisible = false;
     }
 
     private void OnPointerMoved(object? sender, PointerEventArgs e)
     {
-        var pos = e.GetPosition(this);
+        Point pos = e.GetPosition(this);
 
-        Canvas.SetLeft(HoverValueText, pos.X + 15);
-        Canvas.SetTop(HoverValueText, pos.Y + 15);
+        Canvas.SetLeft(HoverValueBlock, pos.X + 15);
+        Canvas.SetTop(HoverValueBlock, pos.Y + 15);
     }
 }

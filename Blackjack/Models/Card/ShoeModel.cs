@@ -4,34 +4,34 @@ using System.Linq;
 
 namespace Blackjack.Models.Card;
 
-public class Shoe
+public class ShoeModel
 {
-    private Queue<Card> _cards;
+    private Queue<CardModel> _cards;
 
-    public Shoe(int deckSize)
+    public ShoeModel(int deckSize)
     {
-        Queue<Card> cards = new();
+        Queue<CardModel> cards = new();
 
         for (int i = 0; i < deckSize; i++)
             foreach (Suit suit in Enum.GetValuesAsUnderlyingType<Suit>())
             foreach (Rank rank in Enum.GetValuesAsUnderlyingType<Rank>())
-                cards.Enqueue(new Card(suit, rank, true));
+                cards.Enqueue(new CardModel(suit, rank, true));
 
         _cards = cards;
     }
 
     public void Shuffle()
     {
-        _cards = new Queue<Card>(_cards.Shuffle());
+        _cards = new Queue<CardModel>(_cards.Shuffle());
     }
 
-    public Card Draw()
+    public CardModel Draw()
     {
         return _cards.Dequeue();
     }
 
-    public void Append(Card card)
+    public void Append(CardModel cardModel)
     {
-        _cards.Enqueue(card);
+        _cards.Enqueue(cardModel);
     }
 }
