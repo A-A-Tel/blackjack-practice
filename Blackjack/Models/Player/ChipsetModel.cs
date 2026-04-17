@@ -1,5 +1,5 @@
 namespace Blackjack.Models.Player;
 
-public class Chipset
+public class ChipsetModel
 {
 }
