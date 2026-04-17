@@ -5,7 +5,8 @@
              xmlns:table="clr-namespace:Blackjack.ViewModels.Table"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="Blackjack.Views.Table.TableView"
-             x:DataType="table:TableViewModel">
+             x:DataType="table:TableViewModel"
+             Background="DarkGreen">
 
 
 </UserControl>

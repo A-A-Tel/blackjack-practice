@@ -5,13 +5,12 @@ namespace Blackjack.Models.Player;
 
 public class PlayerModel
 {
-    public HandModel Hand { get; } = new();
-    
-    public ChipsetModel Chipset { get; } = new();
-    
-    public string Name { get; } = NameGenerator.Generate();
-    
     private static readonly RealNameGenerator NameGenerator = new();
+    public HandModel Hand { get; } = new();
+
+    public ChipsetModel Chipset { get; } = new();
+
+    public string Name { get; } = NameGenerator.Generate();
 
     public Action GetAction()
     {

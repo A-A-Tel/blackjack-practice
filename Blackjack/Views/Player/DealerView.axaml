@@ -4,18 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:player="clr-namespace:Blackjack.ViewModels.Player"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Blackjack.Views.Player.PlayerView"
-             x:DataType="{x:Type player:PlayerViewModel}">
-
+             x:Class="Blackjack.Views.Player.DealerView"
+             x:DataType="{x:Type player:DealerViewModel}">
     <Border Padding="12">
         <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto">
             <StackPanel HorizontalAlignment="Center">
-                <TextBlock Text="{Binding Name}" FontSize="28" />
+                <TextBlock Text="Dealer" FontSize="28" />
             </StackPanel>
-            <ContentControl Grid.Row="1" Content="{Binding Hand}" Margin="12" />
-            <StackPanel HorizontalAlignment="Center" Grid.Row="2">
-                <TextBlock Text="Bet amount placeholder" FontSize="20" />
-            </StackPanel>
+            <Grid HorizontalAlignment="Center" Grid.Row="2" RowDefinitions="Auto" ColumnDefinitions="Auto, Auto" ColumnSpacing="50" Margin="12">
+                <ContentControl Content="{Binding Hand}"/>
+                <ContentControl Grid.Column="1" Content="{Binding Shoe}" MaxWidth="100"/>
+            </Grid>
         </Grid>
     </Border>
 </UserControl>

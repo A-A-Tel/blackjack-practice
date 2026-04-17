@@ -1,19 +1,17 @@
-using System.Reactive;
-using Blackjack.Models.Card;
 using Blackjack.Models.Player;
-using ReactiveUI;
+using Blackjack.ViewModels.Card;
 
 namespace Blackjack.ViewModels.Player;
 
-public class DealerViewModel
+public class DealerViewModel : ViewModelBase
 {
-    private DealerModel _dealer;
+    private readonly DealerModel _dealer;
 
     public DealerViewModel(DealerModel dealer)
     {
         _dealer = dealer;
     }
-    
-    public HandModel Hand => _dealer.Hand;
-    public ShoeModel Shoe => _dealer.Shoe;
+
+    public HandViewModel Hand => new(_dealer.Hand);
+    public ShoeViewModel Shoe => new(_dealer.Shoe);
 }

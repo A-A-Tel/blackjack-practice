@@ -6,13 +6,9 @@ namespace Blackjack.Models.Player;
 
 public class DealerModel
 {
-    public DealerModel()
-    {
-    }
-
     public HandModel Hand { get; } = new();
     public ShoeModel Shoe { get; } = new(4);
-    
+
     public void Deal(IEnumerable<PlayerModel> players)
     {
         throw new NotImplementedException();
