@@ -24,4 +24,11 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets/**"/>
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\Dealer\DealerView.axaml.cs">
+        <DependentUpon>DealerView.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 </Project>
