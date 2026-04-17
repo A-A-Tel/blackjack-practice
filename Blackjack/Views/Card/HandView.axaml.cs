@@ -13,6 +13,7 @@ public partial class HandView : UserControl
         PointerMoved += OnPointerMoved;
         PointerEntered += OnPointerEntered;
         PointerExited += OnPointerExited;
+        HoverValueBlock.IsVisible = false;
     }
 
     private void OnPointerEntered(object? sender, PointerEventArgs e)

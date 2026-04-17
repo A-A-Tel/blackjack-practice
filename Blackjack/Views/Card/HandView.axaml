@@ -9,7 +9,7 @@
         <ItemsControl ItemsSource="{Binding Cards}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel ItemWidth="200" MaxWidth="640" ItemSpacing="20" ItemsAlignment="Center" />
+                    <WrapPanel ItemWidth="100" MaxWidth="320" ItemSpacing="10" ItemsAlignment="Center" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 

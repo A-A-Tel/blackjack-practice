@@ -7,8 +7,5 @@
              x:Class="Blackjack.Views.Table.TableView"
              x:DataType="table:TableViewModel">
 
-    <Grid>
-        <ContentControl Content="{Binding Hand}" />
-    </Grid>
 
 </UserControl>

@@ -21,5 +21,4 @@ public class TableViewModel : PageViewModelBase
     public DealerModel Dealer => _table.Dealer;
     public GameState State => _table.State;
 
-    public HandViewModel Hand { get; } = new(new HandModel());
 }
