@@ -1,6 +1,6 @@
 namespace Blackjack.Models.Card;
 
-public enum CardRank
+public enum Rank
 {
     Two,
     Three,

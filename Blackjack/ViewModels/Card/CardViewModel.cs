@@ -2,7 +2,6 @@ using System;
 using System.Reactive;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Blackjack.Models.Card;
 using ReactiveUI;
 
 namespace Blackjack.ViewModels.Card;
@@ -12,27 +11,27 @@ public class CardViewModel : ViewModelBase
     private static readonly Bitmap BackImage =
         new(AssetLoader.Open(new Uri("avares://Blackjack/Assets/Cards/back.png")));
 
-    private readonly CardModel _cardModel;
+    private readonly Models.Card.Card _card;
 
-    public CardViewModel(CardModel cardModel)
+    public CardViewModel(Models.Card.Card card)
     {
-        _cardModel = cardModel;
+        _card = card;
 
         Image = new Bitmap(AssetLoader.Open(
             new Uri($"avares://Blackjack/Assets/Cards/{Suit}{Rank}.png")));
 
         Flip = ReactiveCommand.Create(() =>
         {
-            _cardModel.Flip();
+            _card.Flip();
             this.RaisePropertyChanged(nameof(IsFlipped));
             this.RaisePropertyChanged(nameof(Image));
         });
     }
 
-    private string Rank => _cardModel.Rank.ToString();
-    private string Suit => _cardModel.Suit.ToString();
+    private string Rank => _card.Rank.ToString();
+    private string Suit => _card.Suit.ToString();
 
-    private bool IsFlipped => _cardModel.Flipped;
+    private bool IsFlipped => _card.Flipped;
 
     public Bitmap Image => IsFlipped ? BackImage : field;
 

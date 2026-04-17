@@ -2,13 +2,13 @@ using System.Collections.Generic;
 
 namespace Blackjack.Models.Card;
 
-public class CardHand
+public class Hand
 {
-    private readonly List<CardModel> _cards = [];
+    private readonly List<Card> _cards = [];
 
-    public void Hit(CardModel cardModel)
+    public void Hit(Card card)
     {
-        _cards.Add(cardModel);
+        _cards.Add(card);
     }
 
     public int GetValue()
@@ -16,9 +16,9 @@ public class CardHand
         int aceCount = 0;
         int value = 0;
 
-        foreach (CardModel card in _cards)
+        foreach (Card card in _cards)
         {
-            if (card.Rank == CardRank.Ace) aceCount++;
+            if (card.Rank == Rank.Ace) aceCount++;
             value += card.Value;
         }
 

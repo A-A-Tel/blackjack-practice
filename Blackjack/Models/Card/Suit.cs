@@ -1,6 +1,6 @@
 namespace Blackjack.Models.Card;
 
-public enum CardSuit
+public enum Suit
 {
     Hearts,
     Diamonds,

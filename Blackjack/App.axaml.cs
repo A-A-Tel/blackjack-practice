@@ -25,7 +25,7 @@ public class App : Application
             MainWindowViewModel mainWindowViewModel = new();
             NavigationService navigationService = new(mainWindowViewModel);
 
-            mainWindowViewModel.CurrentPage = new CardViewModel(new CardModel(CardSuit.Clubs, CardRank.Ace, false));
+            mainWindowViewModel.CurrentPage = new CardViewModel(new Card(Suit.Clubs, Rank.Ace, false));
 
             desktop.MainWindow = new MainWindow
             {

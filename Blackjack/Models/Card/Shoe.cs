@@ -6,32 +6,32 @@ namespace Blackjack.Models.Card;
 
 public class Shoe
 {
-    private Queue<CardModel> _cards;
+    private Queue<Card> _cards;
 
     public Shoe(int deckSize)
     {
-        Queue<CardModel> cards = new();
+        Queue<Card> cards = new();
 
         for (int i = 0; i < deckSize; i++)
-            foreach (CardSuit suit in Enum.GetValuesAsUnderlyingType<CardSuit>())
-            foreach (CardRank rank in Enum.GetValuesAsUnderlyingType<CardRank>())
-                cards.Enqueue(new CardModel(suit, rank, true));
+            foreach (Suit suit in Enum.GetValuesAsUnderlyingType<Suit>())
+            foreach (Rank rank in Enum.GetValuesAsUnderlyingType<Rank>())
+                cards.Enqueue(new Card(suit, rank, true));
 
         _cards = cards;
     }
 
     public void Shuffle()
     {
-        _cards = new Queue<CardModel>(_cards.Shuffle());
+        _cards = new Queue<Card>(_cards.Shuffle());
     }
 
-    public CardModel Draw()
+    public Card Draw()
     {
         return _cards.Dequeue();
     }
 
-    public void Append(CardModel cardModel)
+    public void Append(Card card)
     {
-        _cards.Enqueue(cardModel);
+        _cards.Enqueue(card);
     }
 }
