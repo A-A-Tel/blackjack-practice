@@ -6,6 +6,4 @@ public enum GameState
     Bet,
     Play,
     Payout
-    
-    
 }

@@ -1,17 +1,22 @@
 using Blackjack.Models.Card;
+using NameGenerator.Generators;
 
 namespace Blackjack.Models.Player;
 
 public class PlayerModel
 {
-    private ChipsetModel _chipsetModel = new();
-    public HandModel HandModel { get; } = new();
-    public string Name { get; }
+    public HandModel Hand { get; } = new();
+    
+    public ChipsetModel Chipset { get; } = new();
+    
+    public string Name { get; } = NameGenerator.Generate();
+    
+    private static readonly RealNameGenerator NameGenerator = new();
 
     public Action GetAction()
     {
-        int value = HandModel.GetValue();
-        return HandModel.GetValue() switch
+        int value = Hand.GetValue();
+        return Hand.GetValue() switch
         {
             < 6 => Action.Double,
             >= 17 => Action.Stand,
