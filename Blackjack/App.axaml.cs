@@ -7,6 +7,7 @@ using Blackjack.Models.Card;
 using Blackjack.Services;
 using Blackjack.ViewModels;
 using Blackjack.ViewModels.Card;
+using Blackjack.ViewModels.Menu;
 using Blackjack.Views;
 
 namespace Blackjack;
@@ -25,7 +26,7 @@ public class App : Application
             MainWindowViewModel mainWindowViewModel = new();
             NavigationService navigationService = new(mainWindowViewModel);
 
-            mainWindowViewModel.CurrentPage = new CardViewModel(new Card(Suit.Clubs, Rank.Ace, false));
+            mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
 
             desktop.MainWindow = new MainWindow
             {

@@ -6,26 +6,9 @@
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="Blackjack.Views.Table.TableView"
              x:DataType="table:TableViewModel">
+    
+    <Grid>
+        <ContentControl Content="{Binding Hand}"/>
+    </Grid>
 
-    <!-- <StackPanel> -->
-    <!--     <Button Command="{Binding DrawCard}">Trekken</Button> -->
-    <!--     <Grid ColumnDefinitions="200,200,200,200"> -->
-    <!--         <ListBox ItemsSource="{Binding Cards}"> -->
-    <!--             <ListBox.ItemTemplate> -->
-    <!--                 <DataTemplate DataType="{x:Type card:CardViewModel}"> -->
-    <!--                     <StackPanel> -->
-    <!--                         <Image Height="300" Width="200" Source="{Binding Image}" /> -->
-    <!--                         <Button Command="{Binding Flip}">Flip</Button> -->
-    <!--                     </StackPanel> -->
-    <!--                 </DataTemplate> -->
-    <!--             </ListBox.ItemTemplate> -->
-    <!--         </ListBox> -->
-    <!--     </Grid> -->
-    <!-- </StackPanel> -->
-
-    <Border CornerRadius="50" Width="700" Height="700" BorderBrush="Black" BorderThickness="1">
-        <Grid>
-            <TextBlock Text="Tets" />
-        </Grid>
-    </Border>
 </UserControl>

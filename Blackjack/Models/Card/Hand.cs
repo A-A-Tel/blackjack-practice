@@ -4,9 +4,18 @@ namespace Blackjack.Models.Card;
 
 public class Hand
 {
-    private readonly List<Card> _cards = [];
+    private readonly List<Card> _cards =
+    [
+        new(Suit.Clubs, Rank.Ace, false),
+        new(Suit.Spades, Rank.Ace, false),
+        new(Suit.Hearts, Rank.Ace, false),
+        new(Suit.Diamonds, Rank.Ace, false),
+        new(Suit.Clubs, Rank.Ace, false),
+    ];
 
-    public void Hit(Card card)
+    public IReadOnlyList<Card> Cards => _cards;
+
+    public void AddCard(Card card)
     {
         _cards.Add(card);
     }

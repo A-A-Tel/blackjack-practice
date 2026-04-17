@@ -1,8 +1,35 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Blackjack.Views.Card.HandView">
-    Welcome to Avalonia!
+             xmlns:card="clr-namespace:Blackjack.ViewModels.Card"
+             xmlns:views="clr-namespace:Blackjack.Views.Card"
+             x:Class="Blackjack.Views.Card.HandView"
+             x:DataType="{x:Type card:HandViewModel}">
+
+    <Grid ColumnDefinitions="Auto">
+        <ItemsControl ItemsSource="{Binding Cards}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel ItemWidth="200" MaxWidth="640" ItemSpacing="20" ItemsAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type card:CardViewModel}">
+                    <views:CardView/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Floating value label -->
+        <Canvas Grid.Column="0" IsHitTestVisible="False">
+            
+            <Border x:Name="HoverValueText" Background="#bdb9b9"
+                    CornerRadius="6"
+                    Padding="6">
+                <TextBlock Text="{Binding Value}"
+                           Foreground="Black"/>
+            </Border>
+            
+        </Canvas>
+    </Grid>
 </UserControl>

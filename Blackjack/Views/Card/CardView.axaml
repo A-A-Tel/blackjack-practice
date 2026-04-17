@@ -7,7 +7,7 @@
              x:Class="Blackjack.Views.Card.CardView"
              x:DataType="{x:Type card:CardViewModel}">
 
-    <Grid RowDefinitions="*, 1*, *" ColumnDefinitions="*, 0.5*, *">
+    <!-- <Grid RowDefinitions="*, 1*, *" ColumnDefinitions="*, 0.5*, *"> -->
         <Image Grid.Row="1" Grid.Column="1" Source="{Binding Image}" />
-    </Grid>
+    <!-- </Grid> -->
 </UserControl>
