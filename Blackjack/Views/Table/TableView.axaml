@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:table="clr-namespace:Blackjack.ViewModels.Table"
-             xmlns:card="clr-namespace:Blackjack.ViewModels.Card"
              mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="720"
              x:Class="Blackjack.Views.Table.TableView"
              x:DataType="table:TableViewModel">
@@ -23,10 +22,10 @@
     <!--         </ListBox> -->
     <!--     </Grid> -->
     <!-- </StackPanel> -->
-    
+
     <Border CornerRadius="50" Width="700" Height="700" BorderBrush="Black" BorderThickness="1">
         <Grid>
-            <TextBlock Text="Tets"/>
+            <TextBlock Text="Tets" />
         </Grid>
     </Border>
 </UserControl>

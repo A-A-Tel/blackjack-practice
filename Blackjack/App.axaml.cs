@@ -3,9 +3,10 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using Blackjack.Models.Card;
 using Blackjack.Services;
 using Blackjack.ViewModels;
-using Blackjack.ViewModels.Menu;
+using Blackjack.ViewModels.Card;
 using Blackjack.Views;
 
 namespace Blackjack;
@@ -24,7 +25,7 @@ public class App : Application
             MainWindowViewModel mainWindowViewModel = new();
             NavigationService navigationService = new(mainWindowViewModel);
 
-            mainWindowViewModel.CurrentPage = new TitleViewModel(navigationService);
+            mainWindowViewModel.CurrentPage = new CardViewModel(new CardModel(CardSuit.Clubs, CardRank.Ace, false));
 
             desktop.MainWindow = new MainWindow
             {

@@ -1,6 +1,5 @@
 using System;
 using System.Reactive;
-using System.Windows.Input;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using Blackjack.Models.Card;
@@ -12,6 +11,8 @@ public class CardViewModel : ViewModelBase
 {
     private static readonly Bitmap BackImage =
         new(AssetLoader.Open(new Uri("avares://Blackjack/Assets/Cards/back.png")));
+
+    private readonly CardModel _cardModel;
 
     public CardViewModel(CardModel cardModel)
     {
@@ -28,14 +29,12 @@ public class CardViewModel : ViewModelBase
         });
     }
 
-    private readonly CardModel _cardModel;
-
     private string Rank => _cardModel.Rank.ToString();
     private string Suit => _cardModel.Suit.ToString();
 
     private bool IsFlipped => _cardModel.Flipped;
 
     public Bitmap Image => IsFlipped ? BackImage : field;
-    
-    public ICommand Flip { get; }
+
+    public ReactiveCommand<Unit, Unit> Flip { get; }
 }
